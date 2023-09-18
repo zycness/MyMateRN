@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1036028886904",
+    "project_id": "mymate-rn",
+    "storage_bucket": "mymate-rn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036028886904:android:5de83025ecbee7e8c7528d",
+        "android_client_info": {
+          "package_name": "com.adviters.mymate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOIJKQ7RY3QP1mw20Gw6gAR-gYOQ7gH7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
