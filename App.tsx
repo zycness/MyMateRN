@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./pages/Home";
 import Login from "./pages/Login";
-import auth from "@react-native-firebase/auth";
+import { auth } from "./firebase/config";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,7 +19,7 @@ function App() {
   }
 
   React.useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    const subscriber = auth.onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
   }, []);
 

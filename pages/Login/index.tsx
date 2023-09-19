@@ -6,15 +6,27 @@ import {
   TextInput,
   View,
   Image,
+  Alert,
 } from "react-native";
 import React from "react";
+import { auth } from "../../firebase/config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const [user, setUser] = React.useState({
     email: "",
     password: "",
   });
-  const [number, onChangeNumber] = React.useState("");
+
+  const handleSubmit = async () => {
+    await signInWithEmailAndPassword(auth, user.email, user.password)
+      .then((res) => {
+        Alert.alert("Success", "Se ha iniciado correctamente");
+      })
+      .catch((err) => {
+        Alert.alert("Error", "Hubo un error al iniciar sesión");
+      });
+  };
 
   return (
     <View
@@ -50,7 +62,7 @@ const Login = () => {
           <TextInput
             style={styles.input}
             onChangeText={(text) => setUser((old) => ({ ...old, email: text }))}
-            value={number}
+            value={user.email}
             placeholder="pablo.gomez@adviters.com"
             keyboardType="email-address"
             inputMode="email"
@@ -63,7 +75,7 @@ const Login = () => {
             onChangeText={(text) =>
               setUser((old) => ({ ...old, password: text }))
             }
-            value={number}
+            value={user.password}
             autoComplete="password"
             aria-label="Ingrese su contraseña"
             secureTextEntry
@@ -77,7 +89,7 @@ const Login = () => {
             <Text style={{ ...styles.label, textDecorationLine: "underline" }}>
               Forgot password
             </Text>
-            <Button title="Login" color={"#0080FB"} />
+            <Button title="Login" color={"#0080FB"} onPress={handleSubmit} />
           </View>
         </SafeAreaView>
       </View>
